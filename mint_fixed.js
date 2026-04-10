@@ -18,7 +18,7 @@ const distributorPublic = "GD7RUMSLWDZSDKB53R63MO25GYG7FNEJAK7L7UJNMZ4ESJOIU6AXX
 
 // Token 信息
 const ASSET_CODE = "paiyouhao";
-const AMOUNT = "934444443987";  // 发行数量
+const AMOUNT = "922337203685";  // 发行数量
 
 async function main() {
   try {
