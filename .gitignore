@@ -1,0 +1,4 @@
+node_modules/
+npm-debug.log
+mint_output.txt
+test.txt
