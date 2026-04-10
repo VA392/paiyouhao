@@ -13,7 +13,7 @@ const NETWORK_PASSPHRASE = "Pi Testnet";
 
 // 已恢复原始助记词（请注意：这些字符串不能直接传给 fromSecret，除非它们是真正的 Secret Key）
 const issuerSecret = "aware enter birth glad arch emerge release two nasty mass coast about thumb sick biology ivory tide craft wolf thrive congress purse attend trouble";
-const distributorSecret = "double clap cement street grace loop donkey card exclude layer dream glare crowd dress entry gather pause gentle during member rigid meat already hurry";
+const distributorSecret = "SDFNSQCHBYOFYU4ZS2KEIG47JOY7HELITCS64TN25IOBQANM5KBOHIQQ";
 
 const issuerPublic = "GD7RUMSLWDZSDKB53R63MO25GYG7FNEJAK7L7UJNMZ4ESJOIU6AXX3NM";
 const distributorPublic = "GCFX2NHHA7NCB4FBKHCZCVCXMGCNV25EPCK4UZNKEE4HSNDPBZ66SPMN";
