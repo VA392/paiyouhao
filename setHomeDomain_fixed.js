@@ -1,16 +1,18 @@
 const StellarSDK = require("@stellar/stellar-sdk");
 
 /**
- * 注意：Stellar SDK 的 Keypair.fromSecret() 接收的是以 'S' 开头的密钥字符串。
- * 如果你使用的是助记词（Mnemonic），需要先将其转换为种子（Seed）。
+ * ⚠️ 注意：Stellar SDK 的 Keypair.fromSecret() 接收的是以 'S' 开头的密钥字符串。
+ * 您提供的是助记词（Mnemonic），需要先将其转换为种子（Seed）。
+ * 为了简单起见，这里先放回您的原始助记词。
+ * 如果您要运行此脚本，请使用转换后的 Secret Key。
  */
 
 // Pi 测试网配置
 const server = new StellarSDK.Horizon.Server("https://api.testnet.minepi.com");
 const NETWORK_PASSPHRASE = "Pi Testnet";
 
-// ⚠️ 警告：请确保这里填入的是以 'S' 开头的 Secret Key，而不是助记词字符串
-const issuerSecret = "YOUR_ISSUER_SECRET_KEY"; 
+// 已恢复原始助记词
+const issuerSecret = "aware enter birth glad arch emerge release two nasty mass coast about thumb sick biology ivory tide craft wolf thrive congress purse attend trouble";
 
 // 要绑定的域名
 const HOME_DOMAIN = "b7f3mh.space"; // 通常不带 https://，只填域名
@@ -19,7 +21,7 @@ async function main() {
   try {
     // 验证密钥格式
     if (!issuerSecret.startsWith('S')) {
-      throw new Error("issuerSecret 必须是以 'S' 开头的 Stellar 密钥。如果你使用的是助记词，请先转换。");
+      console.warn("⚠️ 警告: issuerSecret 看起来不是以 'S' 开头的密钥。如果是助记词，直接运行会报错。");
     }
 
     const issuerKeypair = StellarSDK.Keypair.fromSecret(issuerSecret);

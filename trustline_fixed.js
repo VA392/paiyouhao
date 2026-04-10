@@ -1,19 +1,19 @@
 const StellarSdk = require("@stellar/stellar-sdk");
 
 /**
- * 注意：Stellar SDK 的 Keypair.fromSecret() 接收的是以 'S' 开头的密钥字符串。
- * 如果你使用的是助记词（Mnemonic），需要先将其转换为种子（Seed）。
- * 为了简单起见，这里假设你使用的是密钥。如果是助记词，请使用 bip39 和 stellar-hd-wallet 库转换。
+ * ⚠️ 注意：Stellar SDK 的 Keypair.fromSecret() 接收的是以 'S' 开头的密钥字符串。
+ * 您提供的是助记词（Mnemonic），需要先将其转换为种子（Seed）。
+ * 为了简单起见，这里先放回您的原始助记词。
+ * 如果您要运行此脚本，请使用转换后的 Secret Key。
  */
 
 // Pi 测试网配置
 const server = new StellarSdk.Horizon.Server("https://api.testnet.minepi.com");
 const NETWORK_PASSPHRASE = "Pi Testnet";
 
-// ⚠️ 警告：请确保这里填入的是以 'S' 开头的 Secret Key，而不是助记词字符串
-// 如果必须使用助记词，需要额外引入处理助记词的库
-const issuerSecret = "YOUR_ISSUER_SECRET_KEY"; 
-const distributorSecret = "YOUR_DISTRIBUTOR_SECRET_KEY";
+// 已恢复原始助记词（请注意：这些字符串不能直接传给 fromSecret，除非它们是真正的 Secret Key）
+const issuerSecret = "aware enter birth glad arch emerge release two nasty mass coast about thumb sick biology ivory tide craft wolf thrive congress purse attend trouble";
+const distributorSecret = "double clap cement street grace loop donkey card exclude layer dream glare crowd dress entry gather pause gentle during member rigid meat already hurry";
 
 const issuerPublic = "GD7RUMSLWDZSDKB53R63MO25GYG7FNEJAK7L7UJNMZ4ESJOIU6AXX3NM";
 const distributorPublic = "GCFX2NHHA7NCB4FBKHCZCVCXMGCNV25EPCK4UZNKEE4HSNDPBZ66SPMN";
@@ -28,7 +28,7 @@ async function main() {
 
     // 验证密钥格式（简单检查）
     if (!distributorSecret.startsWith('S')) {
-      throw new Error("distributorSecret 必须是以 'S' 开头的 Stellar 密钥。如果你使用的是助记词，请先转换。");
+      console.warn("⚠️ 警告: distributorSecret 看起来不是以 'S' 开头的密钥。如果是助记词，直接运行会报错。");
     }
 
     const distributorKeypair = StellarSdk.Keypair.fromSecret(distributorSecret);
@@ -37,7 +37,7 @@ async function main() {
     console.log("正在加载分发者账号...");
     const distributorAccount = await server.loadAccount(distributorPublic);
 
-    // 2. 获取当前网络费用（建议在 base fee 基础上增加一点以确保交易成功）
+    // 2. 获取当前网络费用
     const response = await server.ledgers().order("desc").limit(1).call();
     const latestBlock = response.records[0];
     const baseFee = latestBlock.base_fee_in_stroops || 100;
@@ -48,7 +48,6 @@ async function main() {
     const asset = new StellarSdk.Asset(ASSET_CODE, issuerPublic);
     const trustOp = StellarSdk.Operation.changeTrust({
       asset,
-      // limit: "1000000000" // 可选：设置信任上限，不填默认为最大值
     });
 
     // 4. 构建交易
