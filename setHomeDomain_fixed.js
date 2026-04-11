@@ -12,7 +12,7 @@ const server = new StellarSDK.Horizon.Server("https://api.testnet.minepi.com");
 const NETWORK_PASSPHRASE = "Pi Testnet";
 
 // 已恢复原始助记词
-const issuerSecret = "aware enter birth glad arch emerge release two nasty mass coast about thumb sick biology ivory tide craft wolf thrive congress purse attend trouble";
+const issuerSecret = "SC2UWPGWPPP7RHMJ5LS6KD6EYDQFWHOYCREGZEK2346LSVMCQIB6F76I";
 
 // 要绑定的域名
 const HOME_DOMAIN = "b7f3mh.space"; // 通常不带 https://，只填域名

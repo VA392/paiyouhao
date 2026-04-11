@@ -1,0 +1,17 @@
+# Pi Network Token Metadata
+# 路径应部署在: https://b7f3mh.space/.well-known/stellar.toml
+
+NETWORK_PASSPHRASE="Pi Testnet"
+
+[[CURRENCIES]]
+code="paiyouhao"
+issuer="GCFX2NHHA7NCB4FBKHCZCVCXMGCNV25EPCK4UZNKEE4HSNDPBZ66SPMN"
+display_decimals=7
+name="派友好"
+desc="派友好生态代币"
+# 请确保此链接可公开访问且服务器支持 CORS
+image="https://b7f3mh.space/logo.png" 
+
+[DOCUMENTATION]
+ORG_NAME="派友好"
+ORG_URL="https://b7f3mh.space"
