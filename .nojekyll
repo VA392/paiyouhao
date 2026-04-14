@@ -1,1 +1,6 @@
-
+[[CURRENCIES]]
+code="paiyouhao"
+issuer="GCFX2NHHA7NCB4FBKHCZCVCXMGCNV25EPCK4UZNKEE4HSNDPBZ66SPMN"
+name="PaiYouhao"
+desc="This is a test token created on Pi Testnet for learning and demonstration."
+image="https://b7f2mh.space/paiyouhao.png"
